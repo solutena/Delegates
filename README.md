@@ -4,7 +4,7 @@
 
 여러개의 파라미터가 필요한 경우 `class`, `struct`를 사용한다.
 
-`class`, `struct` 가 굳이 필요없는 경우 Tuple을 사용한다.
+`class`, `struct` 가 굳이 필요없는 경우 `Tuple`을 사용한다.
 
 # 예제
 
