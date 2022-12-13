@@ -3,6 +3,7 @@
 `Action`, `Func` 등 `delegate`가 여러개로 이루어져 있을 때 추가 및 제거가 정상 동작 한다
 
 여러개의 파라미터가 필요한 경우 `class`, `struct`를 사용한다.
+
 `class`, `struct` 가 굳이 필요없는 경우 Tuple을 사용한다.
 
 # 예제
