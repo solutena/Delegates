@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Actions<T>
 {
@@ -21,10 +22,9 @@ public class Actions<T>
 
 	public void Invoke(T target)
 	{
-		List.Reverse();
-		for (int i = List.Count - 1; i >= 0; i--)
-			List[i](target);
-		List.Reverse();
+		var list = List.ToList();
+		foreach (var item in list)
+			item(target);
 	}
 }
 
@@ -48,10 +48,9 @@ public class FuncsInt<T>
 
 	public int Invoke(T target, int value)
 	{
-		List.Reverse();
-		for (int i = List.Count - 1; i >= 0; i--)
-			value = List[i](target, value);
-		List.Reverse();
+		var list = List.ToList();
+		foreach (var item in list)
+			value = item(target,value);
 		return value;
 	}
 }
@@ -76,10 +75,9 @@ public class FuncsFloat<T>
 
 	public float Invoke(T target, float value)
 	{
-		List.Reverse();
-		for (int i = List.Count - 1; i >= 0; i--)
-			value = List[i](target, value);
-		List.Reverse();
+		var list = List.ToList();
+		foreach (var item in list)
+			value = item(target, value);
 		return value;
 	}
 }
