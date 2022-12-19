@@ -4,7 +4,7 @@
 
 여러개의 파라미터가 필요한 경우 `class`, `struct`를 사용한다.
 
-`class`, `struct` 가 굳이 필요없는 경우 `Tuple`을 사용한다.
+명명된 `class`, `struct` 가 굳이 필요없는 경우 `Tuple`을 사용한다.
 
 # 예제
 
@@ -65,18 +65,19 @@ void Start()
 
 	getInt = new FuncsInt();
 
-	getInt.Add(Add50);
+	getInt += Add50;
 	Debug.Log(getInt.Invoke(100));
 
-	getInt.Remove(Add50);
+	getInt -= Add50;
 	Debug.Log(getInt.Invoke(100));
 }
 ```
 
 `Add50` : `value`에 50을 더하는 함수이다.
 
-`Add`로 함수를 더하고,
-`Remove`로 함수를 제거한다.
+`+=` 로 함수를 더하고,
+
+`-=` 로 함수를 제거한다.
 
 결과
 ```
