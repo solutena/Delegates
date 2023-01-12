@@ -60,19 +60,19 @@ public class Actions<T>
 	}
 }
 
-public class FuncsInt
+public class Funcs<Result> where Result : IComparable
 {
-	public List<Func<int, int>> List { get; set; } = new List<Func<int, int>>();
+	public List<Func<Result, Result>> List { get; set; } = new List<Func<Result, Result>>();
 
-	public static FuncsInt operator +(FuncsInt funcs, Func<int, int> action)
+	public static Funcs<Result> operator +(Funcs<Result> funcs, Func<Result, Result> action)
 	{
 		if (funcs == null)
-			funcs = new FuncsInt();
+			funcs = new Funcs<Result>();
 		funcs.List.Add(action);
 		return funcs;
 	}
 
-	public static FuncsInt operator -(FuncsInt funcs, Func<int, int> action)
+	public static Funcs<Result> operator -(Funcs<Result> funcs, Func<Result, Result> action)
 	{
 		int index = funcs.List.FindIndex(match => match.Method == action.Method);
 		if (index < 0)
@@ -81,28 +81,28 @@ public class FuncsInt
 		return funcs;
 	}
 
-	public int Invoke(int value)
+	public Result Invoke(Result value)
 	{
 		var list = List.ToList();
-		foreach (var item in list)
-			value = item(value);
+		foreach (var func in list)
+			value = func(value);
 		return value;
 	}
 }
 
-public class FuncsInt<T>
+public class Funcs<T, Result> where Result : IComparable
 {
-	public List<Func<T, int, int>> List { get; set; } = new List<Func<T, int, int>>();
+	public List<Func<T, Result, Result>> List { get; set; } = new List<Func<T, Result, Result>>();
 
-	public static FuncsInt<T> operator +(FuncsInt<T> funcs, Func<T, int, int> action)
+	public static Funcs<T, Result> operator +(Funcs<T, Result> funcs, Func<T, Result, Result> action)
 	{
 		if (funcs == null)
-			funcs = new FuncsInt<T>();
+			funcs = new Funcs<T, Result>();
 		funcs.List.Add(action);
 		return funcs;
 	}
 
-	public static FuncsInt<T> operator -(FuncsInt<T> funcs, Func<T, int, int> action)
+	public static Funcs<T, Result> operator -(Funcs<T, Result> funcs, Func<T, Result, Result> action)
 	{
 		int index = funcs.List.FindIndex(match => match.Method == action.Method);
 		if (index < 0)
@@ -111,71 +111,11 @@ public class FuncsInt<T>
 		return funcs;
 	}
 
-	public int Invoke(T target, int value)
+	public Result Invoke(T target, Result value)
 	{
 		var list = List.ToList();
-		foreach (var item in list)
-			value = item(target, value);
-		return value;
-	}
-}
-
-public class FuncsFloat
-{
-	public List<Func<float, float>> List { get; set; } = new List<Func<float, float>>();
-
-	public static FuncsFloat operator +(FuncsFloat funcs, Func<float, float> action)
-	{
-		if (funcs == null)
-			funcs = new FuncsFloat();
-		funcs.List.Add(action);
-		return funcs;
-	}
-
-	public static FuncsFloat operator -(FuncsFloat funcs, Func<float, float> action)
-	{
-		int index = funcs.List.FindIndex(match => match.Method == action.Method);
-		if (index < 0)
-			return funcs;
-		funcs.List.RemoveAt(index);
-		return funcs;
-	}
-
-	public float Invoke(float value)
-	{
-		var list = List.ToList();
-		foreach (var item in list)
-			value = item(value);
-		return value;
-	}
-}
-
-public class FuncsFloat<T>
-{
-	public List<Func<T, float, float>> List { get; set; } = new List<Func<T, float, float>>();
-
-	public static FuncsFloat<T> operator +(FuncsFloat<T> funcs, Func<T, float, float> action)
-	{
-		if (funcs == null)
-			funcs = new FuncsFloat<T>();
-		funcs.List.Add(action);
-		return funcs;
-	}
-
-	public static FuncsFloat<T> operator -(FuncsFloat<T> funcs, Func<T, float, float> action)
-	{
-		int index = funcs.List.FindIndex(match => match.Method == action.Method);
-		if (index < 0)
-			return funcs;
-		funcs.List.RemoveAt(index);
-		return funcs;
-	}
-
-	public float Invoke(T target, float value)
-	{
-		var list = List.ToList();
-		foreach (var item in list)
-			value = item(target, value);
+		foreach (var func in list)
+			value = func(target, value);
 		return value;
 	}
 }
