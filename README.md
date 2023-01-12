@@ -21,13 +21,9 @@ public class Example
 	Actions<Item> itemAction;
 	Actions<Tuple<Item, int>> itemCountAction;
 
-	FuncsInt getInt;
-	FuncsInt<Item> getIntByItem;
-	FuncsInt<Tuple<Item, int>> getIntByItemCount;
-
-	FuncsFloat getFloat;
-	FuncsFloat<Item> getFloatByItem;
-	FuncsFloat<Tuple<Item, int>> getFloatByItemCount;
+	Funcs<int> getInt;
+	Funcs<Item,int> getIntByItem;
+	Funcs<Tuple<Item, int>,int> getIntByItemCount;
 }
 ```
 
@@ -38,19 +34,12 @@ public class Example
 
 `Actions<Tuple<Item, int>> itemCountAction` Item과 int를 사용한 함수 실행이다
 
-### FuncsInt
-`FuncsInt getInt` int를 반환하는 함수 실행이다
+### Funcs
+`Funcs<int> getInt` 숫자를 를 반환하는 함수 실행이다
 
-`FuncsInt<Item> getIntByItem` Item을 사용하여 int 를 반환하는 함수 실행이다
+`Funcs<Item,int> getIntByItem` Item을 사용하여 int 를 반환하는 함수 실행이다
 
-`FuncsInt<Tuple<Item, int>> getIntByItemCount` Item과 int를 사용하여 int를 반환하는 함수 실행이다
-
-### FuncsFloat
-`FuncsFloat getFloat` float를 반환하는 함수 실행이다
-
-`FuncsFloat<Item> getFloatByItem` Item을 사용하여 float를 반환하는 함수 실행이다
-
-`FuncsFloat<Tuple<Item, int>> getFloatByItemCount` Item과 int를 사용하여 float를 반환하는 함수 실행이다
+`Funcs<Tuple<Item, int>,int> getIntByItemCount` Item과 int를 사용하여 int를 반환하는 함수 실행이다
 
 
 ### Add, Remove
