@@ -74,6 +74,8 @@ public class Funcs<Result> where Result : IComparable
 
 	public static Funcs<Result> operator -(Funcs<Result> funcs, Func<Result, Result> action)
 	{
+		if (funcs == null)
+			return null;
 		int index = funcs.List.FindIndex(match => match.Method == action.Method);
 		if (index < 0)
 			return funcs;
