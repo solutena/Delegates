@@ -7,7 +7,7 @@
 명명된 `class`, `struct` 가 굳이 필요없는 경우 `Tuple`을 사용한다.
 
 ### Actions
-### Actions<Item>
+### Actions<T>
 Action을 리스트로 가지는 클래스이다
 
 `+=` 로 함수을 추가한다
@@ -15,7 +15,7 @@ Action을 리스트로 가지는 클래스이다
 `-=` 로 함수을 제거한다
 
 ### Funcs<Result>
-### Funcs<<Item>Result>
+### Funcs<<T>Result>
 Func를 리스트로 가지고 Result를 반환하는 클래스이다
 	
 Result는 숫자만 가능하다
@@ -25,7 +25,7 @@ Result는 숫자만 가능하다
 `-=` 로 함수을 제거한다
 	
 ### Event	
-### Event<Item>
+### Event<T>
 유일한 Action과 콜백인 Action들을 리스트로 가지는 클래스이다
 	
 `+=` 로 콜백을 추가한다
@@ -35,7 +35,7 @@ Result는 숫자만 가능하다
 `*=` 로 실행할 함수를 대입할 수 있다
 
 ### EventFunc<Result>
-### EventFunc<Item,Result>	
+### EventFunc<T,Result>	
 Func를 리스트로 가지고 Result를 반환하며 콜백인 Action들을 가지는 클래스이다
 	
 Result는 숫자만 가능하다
