@@ -7,7 +7,7 @@
 명명된 `class`, `struct` 가 굳이 필요없는 경우 `Tuple`을 사용한다.
 
 ### Actions
-### Actions <T>
+### Actions\<T>
 Action을 리스트로 가지는 클래스이다
 
 `+=` 로 함수을 추가한다
@@ -25,7 +25,7 @@ Result는 숫자만 가능하다
 `-=` 로 함수을 제거한다
 	
 ### Event	
-### Event <T>
+### Event\<T>
 유일한 Action과 콜백인 Action들을 리스트로 가지는 클래스이다
 	
 `+=` 로 콜백을 추가한다
