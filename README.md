@@ -7,7 +7,7 @@
 명명된 `class`, `struct` 가 굳이 필요없는 경우 `Tuple`을 사용한다.
 
 ### Actions
-### Actions<T>
+### Actions <T>
 Action을 리스트로 가지는 클래스이다
 
 `+=` 로 함수을 추가한다
