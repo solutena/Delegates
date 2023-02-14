@@ -6,59 +6,50 @@
 
 명명된 `class`, `struct` 가 굳이 필요없는 경우 `Tuple`을 사용한다.
 
-# 예제
-
-```
-public class Example
-{
-	public class Item
-	{
-		public string key;
-		public int damage;
-	}
-
-	Actions<int> intAction;
-	Actions<Item> itemAction;
-	Actions<Tuple<Item, int>> itemCountAction;
-
-	Funcs<int> getInt;
-	Funcs<Item,int> getIntByItem;
-	Funcs<Tuple<Item, int>,int> getIntByItemCount;
-	
-	Event intEvent;
-	EventFunc<int> getIntEvent;
-	EventFunc<Item,int> getIntByItemEvent;
-}
-```
-
 ### Actions
-`Actions<int> intAction` int를 사용한 함수 실행이다
+### Actions<T>
+Action을 리스트로 가지는 클래스이다
 
-`Actions<Item> itemAction` Item을 사용한 함수 실행이다
+`+=` 로 함수을 추가한다
 
-`Actions<Tuple<Item, int>> itemCountAction` Item과 int를 사용한 함수 실행이다
+`-=` 로 함수을 제거한다
 
-### Funcs
-`Funcs<int> getInt` 숫자를 반환하는 함수 실행이다
+### Funcs<Result>
+### Funcs<<T>Result>
+Func를 리스트로 가지고 Result를 반환하는 클래스이다
+	
+Result는 숫자만 가능하다
 
-`Funcs<Item,int> getIntByItem` Item을 사용하여 int를 반환하는 함수 실행이다
+`+=` 로 함수을 추가한다
+	
+`-=` 로 함수을 제거한다
+	
+### Event	
+### Event<T>
+유일한 Action과 콜백인 Action들을 리스트로 가지는 클래스이다
+	
+`+=` 로 콜백을 추가한다
+	
+`-=` 로 콜백을 제거한다
+	
+`*=` 로 실행할 함수를 대입할 수 있다
 
-`Funcs<Tuple<Item, int>,int> getIntByItemCount` Item과 int를 사용하여 int를 반환하는 함수 실행이다
+### EventFunc<Result>
+### EventFunc<T,Result>	
+Func를 리스트로 가지고 Result를 반환하며 콜백인 Action들을 가지는 클래스이다
+	
+Result는 숫자만 가능하다
+	
+유일한 Action과 콜백인 Action들을 리스트로 가지는 클래스이다
+	
+`+=` 로 콜백을 추가한다
+	
+`-=` 로 콜백을 제거한다
+	
+`*=` 로 실행할 함수를 대입할 수 있다
 
-### Event
-`Funcs<int> getInt` int를 사용한 함수 실행이다
 
-`*=` 로 실행할 유일한 함수를 대입할 수 있다
-
-### EventFunc
-`EventFunc<int> getIntEvent` 숫자를 반환하는 함수 실행이다
-
-`EventFunc<Item,int> getIntByItemEvent` Item을 사용하여 int를 반환하는 함수 실행이다
-
-`*=` 로 실행할 유일한 함수를 대입할 수 있다
-
-
-## Add, Remove
+## Example
 
 ```
 void Start()
