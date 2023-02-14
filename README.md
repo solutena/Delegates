@@ -53,9 +53,6 @@ public class Example
 ### EventFunc
 `EventFunc<int> getIntEvent` 숫자를 반환하는 함수 실행이다
 
-`*=` 로 실행할 유일한 함수를 대입할 수 있다
-
-### EventFunc<Item,int> getIntByItemEvent
 `EventFunc<Item,int> getIntByItemEvent` Item을 사용하여 int를 반환하는 함수 실행이다
 
 `*=` 로 실행할 유일한 함수를 대입할 수 있다
