@@ -22,6 +22,8 @@ public class Funcs<Result> where Result : IComparable
 
 	public Result Invoke(Result value)
 	{
+		if (Func == null)
+			return default;
 		var list = Func.GetInvocationList();
 		foreach (var loop in list)
 		{
@@ -54,6 +56,8 @@ public class Funcs<T, Result> where Result : IComparable
 
 	public Result Invoke(T target, Result value)
 	{
+		if (Func == null)
+			return default;
 		var list = Func.GetInvocationList();
 		foreach (var loop in list)
 		{
@@ -210,10 +214,10 @@ public class EventFunc<Result>
 	}
 }
 
-public class EventFunc<T,Result>
+public class EventFunc<T, Result>
 {
 	Action<Result> Callbacks { get; set; }
-	Func<T,Result> Func { get; set; }
+	Func<T, Result> Func { get; set; }
 
 	public static EventFunc<T, Result> operator +(EventFunc<T, Result> target, Action<Result> action)
 	{
@@ -247,36 +251,36 @@ public class EventFunc<T,Result>
 	}
 }
 
-public class EventFunc<T1,T2, Result>
+public class EventFunc<T1, T2, Result>
 {
 	Action<Result> Callbacks { get; set; }
-	Func<T1,T2, Result> Func { get; set; }
+	Func<T1, T2, Result> Func { get; set; }
 
 	public static EventFunc<T1, T2, Result> operator +(EventFunc<T1, T2, Result> target, Action<Result> action)
 	{
 		if (target == null)
-			target = new EventFunc<T1,T2, Result>();
+			target = new EventFunc<T1, T2, Result>();
 		target.Callbacks += action;
 		return target;
 	}
 
-	public static EventFunc<T1,T2, Result> operator -(EventFunc<T1,T2, Result> target, Action<Result> action)
+	public static EventFunc<T1, T2, Result> operator -(EventFunc<T1, T2, Result> target, Action<Result> action)
 	{
 		if (target == null)
-			target = new EventFunc<T1,T2, Result>();
+			target = new EventFunc<T1, T2, Result>();
 		target.Callbacks -= action;
 		return target;
 	}
 
-	public static EventFunc<T1,T2, Result> operator *(EventFunc<T1,T2, Result> target, Func<T1,T2, Result> func)
+	public static EventFunc<T1, T2, Result> operator *(EventFunc<T1, T2, Result> target, Func<T1, T2, Result> func)
 	{
 		if (target == null)
-			target = new EventFunc<T1,T2, Result>();
+			target = new EventFunc<T1, T2, Result>();
 		target.Func = func;
 		return target;
 	}
 
-	public Result Invoke(T1 t1,T2 t2)
+	public Result Invoke(T1 t1, T2 t2)
 	{
 		var result = Func(t1, t2);
 		Callbacks?.Invoke(result);
