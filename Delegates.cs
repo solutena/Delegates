@@ -23,7 +23,7 @@ public class Funcs<Result> where Result : IComparable
 	public Result Invoke(Result value)
 	{
 		if (Func == null)
-			return default;
+			return value;
 		var list = Func.GetInvocationList();
 		foreach (var loop in list)
 		{
@@ -57,7 +57,7 @@ public class Funcs<T, Result> where Result : IComparable
 	public Result Invoke(T target, Result value)
 	{
 		if (Func == null)
-			return default;
+			return value;
 		var list = Func.GetInvocationList();
 		foreach (var loop in list)
 		{
