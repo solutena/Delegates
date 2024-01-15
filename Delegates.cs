@@ -1,6 +1,6 @@
 using System;
 
-public class Funcs<Result> where Result : IComparable
+public class Funcs<Result>
 {
 	Func<Result, Result> Func { get; set; }
 
@@ -19,7 +19,7 @@ public class Funcs<Result> where Result : IComparable
 	}
 }
 
-public class Funcs<T, Result> where Result : IComparable
+public class Funcs<T, Result>
 {
 	Func<T, Result, Result> Func { get; set; }
 
@@ -33,6 +33,25 @@ public class Funcs<T, Result> where Result : IComparable
 		{
 			Func<T, Result, Result> func = (Func<T, Result, Result>)loop;
 			value = func(target, value);
+		}
+		return value;
+	}
+}
+
+public class Funcs<T1, T2, Result>
+{
+	Func<T1, T2, Result, Result> Func { get; set; }
+
+	public void Add(Func<T1, T2, Result, Result> action) => Func += action;
+	public void Remove(Func<T1, T2, Result, Result> action) => Func -= action;
+
+	public Result Invoke(T1 t1, T2 t2, Result value)
+	{
+		var list = Func.GetInvocationList();
+		foreach (var loop in list)
+		{
+			Func<T1, T2, Result, Result> func = (Func<T1, T2, Result, Result>)loop;
+			value = func(t1, t2, value);
 		}
 		return value;
 	}
